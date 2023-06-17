@@ -225,6 +225,14 @@
     .section.section--muted{
         border:0px;
     }
+    .required {
+        color: var(--text);
+    }
+    input {
+        background-color: var(--bg2);
+        border: 0px;
+	color: var(--text);
+    }
 }
 
 @-moz-document domain("kbin.social") {
@@ -448,7 +456,7 @@
     .pagination__item[href*="p="]{
         display:none;
     }
-    .pagination__item.pagination__item--separator {
+    .pagination__item[href*="p="]:not([rel="prev"]){
         display:none
     }
     /*padding between buttons*/
