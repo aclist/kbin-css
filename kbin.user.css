@@ -453,10 +453,10 @@
     .pagination__item--current-page{
         display:none;
     }
-    .pagination__item[href*="p="]{
-        display:none;
-    }
     .pagination__item[href*="p="]:not([rel="prev"]){
+        display:none
+    }
+    .pagination__item--separator{
         display:none
     }
     /*padding between buttons*/
