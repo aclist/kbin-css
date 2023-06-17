@@ -1,0 +1,672 @@
+/* ==UserStyle==
+@name kbin-css
+@namespace github/aclist/kbin-css
+@homepageURL https://github.com/aclist/kbin-css
+@version 0.1.0
+@updateURL https://raw.githubusercontent.com/aclist/kbin-css/main/kbin.user.css
+@description Parameterized kbin stylesheet
+@author aclist
+@license GNU-V3.0
+
+@preprocessor stylus
+
+@var color bg "Main body" "#222222"
+@var color bg2 "Section/container" "#333333"
+@var color bg3 "Contrasting section" "#1B1B1B"
+@var color textfg "Text foreground" "#999"
+@var color linkfg "Links" "#5ad"
+@var color linkHover "Link hover" "#8ac9ff"
+@var color linkFocus "Link focus" "orange"
+@var color codebg "Code, quotes, text areas" "#111111"
+@var color upvote "Upvotes" "orange"
+@var color downvote "Downvotes" "red"
+
+@var checkbox sidebar "Sidebar" 0
+@var checkbox footer "Footer" 0
+@var checkbox microblog "Microblogs (navbar)" 0
+@var checkbox people "People (navbar)" 0
+@var checkbox activity "Activity" 1
+@var checkbox upvotes "Upvotes" 1
+@var checkbox downvotes "Downvotes" 0
+@var checkbox preview "Post preview" 0
+@var checkbox filters "Page filters" 0
+@var checkbox shortDesc "Post description" 0
+@var checkbox markdown "Markdown icons" 0
+@var checkbox lang "Language dropdown" 0
+@var checkbox helpBtn "Comment help button" 0
+@var checkbox uploadBtn "Image upload button" 0
+@var checkbox badges "Badges" 0
+@var checkbox thumbnail "Thumbnails" 0
+@var checkbox avatar "Avatars" 0
+@var checkbox popover "User metadata popover" 0
+@var checkbox moreOpts "More options action" 0
+@var checkbox metaLink "Meta link icon" 0
+
+==/UserStyle== */
+
+@-moz-document domain("kbin.social") {
+/*MASTER COLOR SCHEME*/
+    :root {
+        --bg: bg;
+        --bg2: bg2;
+        --bg3: bg3;
+        --text: textfg;
+        --link: linkfg;
+        --linkhover: linkHover;
+        --focus: linkFocus;
+        --codebg: codebg;
+        --upvote: upvote;
+        --downvote: downvote;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*NAVBAR*/
+
+    /*replace 'search' icon with text*/
+    header menu li:nth-of-type(1) .icon ::before{
+        content:"Search"
+    }
+    /*replace 'add' icon with text*/
+    header menu li:nth-of-type(2) .icon ::before{
+        content:"Post";
+    }
+    /*replace 'channel' icon with text*/
+    header menu li:nth-of-type(3) .icon ::before{
+        content:"Subs";
+    }
+    /*normalize login username size and padding*/
+    .login{
+        font-size:1.2em;
+        padding-bottom:.5rem
+    }
+    /*recolor header links*/
+    header menu li a {
+        color:var(--text) !important;
+    }
+    /*recolor channel prefix*/
+    .head-title span{
+        color:var(--text);
+    }
+    /*remove bottom border on active header item*/
+    #header menu li .active, #header menu li a, #header menu li a:hover{
+        border-bottom:0px;
+    }
+    #header menu li a:hover{
+        color:var(--linkhover) !important
+    }
+    /*smaller header*/
+    #header{
+        font-size:0.7rem;
+    }
+    /*ease padding*/
+        #header .kbin-container{
+            padding:0px;
+    }
+    /*left offset*/
+       .head-nav{
+           padding-left:10px;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*PAGE BODY/THREAD INDEX*/
+
+    body{
+        background-color:var(--bg);
+    }
+    .kbin-container{
+        background-color:var(--bg);
+    }
+     #footer{
+        background-color:var(--bg);
+    }
+    #middle{
+        background-color:var(--bg);
+    }
+    /*ease main view width*/
+    .sidebar-left .sidebar-right #middle .kbin-container{
+        grid-template-columns:max-content !important;
+    }
+    .sidebar-left{
+        width:fit-content;
+    }
+    [data-controller="kbin notifications"]{
+        display:inline-block !important;
+    }
+
+/*THREAD OPTIONS*/
+
+    /*hide change view icon*/
+    [aria-label="Change view"]{
+        display:none !important;
+    }
+    /*options navbar same color as body*/
+    .options{
+        padding:0;
+        background-color:unset;
+    }
+    /*remove bottom border on sort options*/
+    .options > * a, .options > * a.active, .options > * a:focus-visible, .options > * a:hover, .options > * button.active, .options > * button:focus-visible, .options > * button {
+        border-bottom:0px;
+    }
+    /*add pinned label to pinned posts*/
+    .fa-solid.fa-thumbtack::before{
+        content:"Pinned";
+    }
+    /*tighten padding*/
+    .entry{
+        margin-bottom:0px;
+        border:0px;
+        padding:0rem .5rem;
+    }
+    /*tweak body margins*/
+    #main{
+        padding:0px !important;
+    }
+    .content{
+        margin:0px !important;
+    }
+    #content{
+        padding-left:10px;
+    }
+    /*smaller buttons*/
+    .stretched-link{
+        font-size:0.9em;
+    }
+    /*add submitted by label to thread*/
+    .entry > .entry__meta .user-inline::before{
+        content:"submitted by";
+        color:var(--text)
+    }
+    .entry{
+        padding-top:10px !important;
+        background-color:var(--bg)
+    }
+    .entry__body{
+        padding:0 !important;
+        margin-top:0;
+    }
+    /*smaller post titles*/
+    .entry header h2{
+        font-size:1rem !important
+    }
+    .entry header {
+        margin-bottom:0;
+    }
+    /*comment padding*/
+    .section menu > li{
+        padding:0;
+    }
+    .comment{
+        grid-gap:0rem;
+    }
+    /*normalize post link colors*/
+    .entry header a{
+        color:var(--text);
+    }
+    /*colorize username link*/
+     .user-inline:hover{
+        color:var(--linkhover) !important
+    }
+    /*thread sort method hover color*/
+    .options > * li a:hover{
+        color: var(--linkhover) !important;
+    }
+    /*colorize media links*/
+    main .content a{
+        color: var(--link) !important;
+        opacity: 85%;
+    }
+    main .content a:hover{
+        color:var(--linkhover) !important;
+    }
+    /* no border on muted/alerts*/
+    .section.section--muted{
+        border:0px;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*VOTING*/
+
+    /*tighten margins*/
+    .entry .vote{
+        margin-right: 0rem;
+    }
+    .vote{
+        gap: 0rem;
+    }
+    /*recolor and resize vote button*/
+    .comment .vote button span{
+        font-size:0.8rem;
+        color:var(--text);
+    }
+    /*colorize up/down vote*/
+    .vote .vote__up.active button span,.vote .active.vote__up button{
+        color:var(--upvote) !important;
+    }
+    .vote .vote__down.active button span,.vote .active.vote__down button{
+        color:var(--downvote) !important;
+    }
+    /*replace up and down arrows*/
+    [data-subject-target="favCounter"]::after{
+        content:"ꜛ";vertical-align:sub;
+    }
+    [data-subject-target="downvoteCounter"]::after{
+        content:"ꜜ";vertical-align:sub;
+    }
+    .fa-solid.fa-arrow-up{
+        display:none !important;
+    }
+    .fa-solid.fa-arrow-down{
+        display:none !important;
+    }
+    .comment > .vote{
+        display:block !important;
+    }
+    .vote button span:hover{
+        color:white;
+    }
+    /*vote button same color as bg*/
+    .vote button{
+        background-color:unset;
+        width: 3rem;
+    }
+    .vote button span{
+        font-size:0.9rem !important;
+    }
+    /*vote button padding*/
+    .comment .vote button{
+        width:1rem !important;
+    }
+    /*move votes to left*/
+    .comment aside{
+        grid-area:initial;
+        padding-right:0.5rem;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*THREADS/COMMENTS*/
+
+    /*hide hr*/
+    .options{
+        margin-bottom:0px !important;
+        border:0px;
+    }
+     /*hide comment tree lines*/
+    .comments-tree *, [data-controller="comment subject"]{
+        border-left:0px !important;
+    }
+    /*normalize comment actions to base text color*/
+    .stretched-link{
+        color:var(--text) !important;
+    }
+    .stretched-link:hover{
+        text-decoration:underline;
+    }
+    /*inherit base bg color*/
+    #comments,.comment > .content p{
+        background-color:var(--bg) !important;
+    }
+    /*remove dividers on comments*/
+    .comment{
+        border:0px;
+    }
+    /*tighten padding between comments*/
+    .comment{
+        padding-bottom:0px !important;
+    }
+    /*tighten padding between comment and actions*/
+    .comment menu{
+        display:ruby-base-container;
+    }
+    /*tighten comment header margin*/
+    .comment header{
+        margin-bottom:0px;
+    }
+    /*recolor commenting username link*/
+    .user-inline{
+        color:var(--link) !important;
+    }
+    /*thread controls padding*/
+    .entry footer menu{
+        display:ruby-base-container;
+    }
+
+    /*reskin blockquotes*/
+    .content blockquote{
+        background-color:var(--code);
+        margin:0px !important;
+        padding-left: 2px;
+        border-left: 0px;
+    }
+
+    /*disable focus highlight on comment hover*/
+    .comment:focus-within footer .boosts, .comment:focus-within footer menu, .comment:focus-within header, .comment:focus-within menu, .comment:hover footer .boosts, .comment:hover footer menu, .comment:hover header, .comment:hover menu{
+        animation:none;-webkit-animation:none;
+    }
+    .entry:focus-within .entry__meta, .entry:focus-within menu, .entry:hover .entry__meta, .entry:hover menu{
+        animation:none;-webkit-animation:none;
+    }
+    /*thread sort method active color*/
+    .options > * a.active, .options > * a:focus-visible, .options > * a:hover, .options > * button.active, .options > * button:focus-visible, .options > * button:hover{
+        color:var(--focus) !important;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*THREAD COMPONENT ORDER*/
+/*title, shortdesc, comment submission, sort options, activity, comments*/
+
+   #content {
+        display: grid;
+    }
+    #activity {
+        order: 2;
+        border-radius: 0;
+    }
+    #comment-add {
+        order: 3;
+    }
+    .options {
+        order: 4;
+        z-index: 3;
+    }
+    #comments {
+        order: 5;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*COMMENT SUBMISSION*/
+
+    /*recolor, resize, and remove borders*/
+    textarea{
+        border:0px;
+    }
+    #comment-add{
+        background-color:var(--bg) !important;
+        border:0px;
+        margin:0;
+    }
+    /*align submit button*/
+    .actions{
+        justify-content:right;
+    }
+    /*disable box shadow on dropdowns*/
+    .dropdown__menu{
+        box-shadow:none;
+    }
+    /*move image upload dropdown into view*/
+    .comment-add .dropdown__menu{
+        left:10rem;
+    }
+    /*disable border on textarea buttons*/
+    select,.actions .btn.btn__secondary{
+        border:0px;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*PAGINATION*/
+
+    /*label previous,next buttons in pagination*/
+    .pagination__item.pagination__item--previous-page::after{
+        content:"Previous";
+    }
+    .pagination__item.pagination__item--next-page::before{
+        content:"Next";
+    }
+    /*button-like look*/
+    .pagination__item--previous-page,.pagination__item--next-page{
+        background-color:var(--bg2);
+    }
+    .pagination__item--previous-page:hover,.pagination__item--next-page:hover{
+        background-color:var(--bg3);
+    }
+    /*padding*/
+    .pagination a, .pagination span{
+        padding: 0.3rem 0.5rem;
+    }
+    .pagination.section{
+        padding:0px !important;
+    }
+    /*compact pagination*/
+    .pagination{
+        display:block;
+    }
+    /*hide border*/
+    .pagination.section{
+        border:0px !important;
+    }
+    /*hide numbers*/
+    .pagination__item--current-page{
+        display:none;
+    }
+    .pagination__item[href*="p="]{
+        display:none;
+    }
+    .pagination__item.pagination__item--separator {
+        display:none
+    }
+    /*padding between buttons*/
+    .pagination__item--next-page{
+        display:inline !important;
+        margin-left: 10px !important
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*MAGAZINES*/
+
+    /*remove borders on table rows*/
+    table tbody tr{
+        border:0px;
+    }
+    /*hide icons in table*/
+    .magazine-inline.stretched-link img{
+        display:none;
+    }
+    /*hide users icon*/
+    .fa-solid.fa-users{
+        display:none;
+    }
+    /*reskin table*/
+    .page-magazines > .kbin-container > #main > #content .section{
+        padding:0px !important;
+        margin-bottom:0px !important;
+        background-color:var(--bg);
+        border:0px;
+    }
+    table td, table th{
+        padding: 0px;
+    }
+    .section{
+        background-color:var(--bg);
+        border:0px;
+    }
+    /*remove borders on buttons*/
+    .magazine__subscribe div{
+        border:1px solid #333;
+        border-left:1px solid #333 !important;
+    }
+    .magazine__subscribe form{
+        border:1px solid #333;
+        border-left:1px solid #333 !important;
+    }
+    /*colorize links*/
+    .magazine-inline{
+        color:var(--link) !important;
+    }
+    .magazine-inline:hover{
+        color:var(--linkhover) !important;
+    }
+    table tbody tr:nth-of-type(2n){
+        background-color:unset;
+        border:0px;
+    }
+    /* ? */
+    .entry > footer{
+        padding-bottom:6px;
+    }
+    .section footer menu{
+        column-gap:0.4rem;
+    }
+}
+
+@-moz-document domain("kbin.social") {
+/*HIDE MISC. WIDGETS*/
+
+/*SIDEBAR*/
+
+    if (!(sidebar)) {
+        .sidebar-left #middle .kbin-container{
+            grid-template-areas:"main sidebar" !important;
+            grid-template-columns: unset !important;
+        }
+        #sidebar{
+            display:none !important;
+        }
+        #middle #main{
+            grid-area:main;
+        }
+    }
+
+/*NAVBAR*/
+
+    if (!(microblog)) {
+        .head-nav__menu li:nth-of-type(3){
+            display:none !important;
+        }
+    }
+    if (!(people)) {
+        .head-nav__menu li:nth-of-type(4){
+            display:none !important;
+        }
+    }
+
+/*POSTS, COMMENTS*/
+
+    /*hide short description*/
+    if (!(shortDesc)) {
+        .content.short-desc{
+            display:none;
+        }
+    }
+    /*hide filters*/
+    if (!(filters)) {
+        .options__filters{
+            display:none;
+        }
+    }
+    /*hide user details popover*/
+    if (!(popover)) {
+        #popover{
+            display:none;
+        }
+    }
+    /*hide activity*/
+    if (!(activity)) {
+        #activity{
+           display:none;
+        }
+    }
+    /*hide badges*/
+    if (!(badges)) {
+        .badge.kbin-bg,.badge.success{
+            background-color:#444;
+            border-radius:0px !important;
+            color:white;
+            padding:0.8px;
+        }
+    }
+    /*hide meta link icon*/
+    if (!(metaLink)) {
+        .meta-link{
+            display:none;
+        }
+    }
+
+    /*hide thumbnails*/
+    if (!(thumbnail)) {
+        .entry.section.subject figure,.thumb{
+            display:none;
+        }
+    }
+    if (!(avatar)) {
+        .no-avatar,figure img[src*="avatar_thumb"]{
+            display:none;
+        }
+    } else {
+        .comment > figure {
+            margin-right: 10px;
+        }
+    }
+    /*hide 'more' options on posts*/
+    if (!(moreOpts)) {
+        .section menu .dropdown{
+            display:none !important;
+        }
+    }
+    /*hide post preview button*/
+    if (!(preview)) {
+        .show-preview{
+            display:none !important;
+        }
+    }
+
+/*VOTING*/
+
+    /*hide vote down*/
+    if (!(downvotes)) {
+        [aria-label="Reduce"]{
+            display:none;
+        }
+    }
+    /*hide vote up*/
+    if (!(upvotes)) {
+        [aria-label="Favourite"]{
+            display:none
+        }
+    }
+    if (!(avatar)) {
+        .comment aside {
+            grid-area: avatar-start;
+        }
+    }
+
+/*COMMENT SUBMISSION*/
+
+    /*hide markdown icons*/
+    if (!(markdown)) {
+        .markdown.meta{
+            display:none;
+        }
+    }
+    /*hide language dropdown*/
+    if (!(lang)) {
+        .actions .select{
+            display:none !important;
+        }
+    }
+    /*hide help button*/
+    if (!(helpBtn)) {
+        .actions  li:nth-of-type(1){
+            display:none;
+        }
+    }
+    /*hide image upload*/
+    if (!(uploadBtn)) {
+        .actions  li:nth-of-type(2){
+            display:none;
+        }
+    }
+    /*hide footer*/
+    if (!(footer)) {
+        #scroll-top,#footer{
+            display:none !important;
+        }
+    }
+}
