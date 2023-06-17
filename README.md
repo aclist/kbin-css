@@ -2,7 +2,7 @@
 
 Parameterized kbin style sheet aimed at readability and decluttering.
 
-The base theme makes some changes to the layout and starts with severable icons/widgets/features disabled, such as
+The base theme makes some changes to the layout and starts with several icons/widgets/features disabled, such as
 avatars, thumbnails, icons, the sidebar, etc.
 
 To enable/disable the widgets you prefer, use the radio buttons.
