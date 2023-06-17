@@ -16,7 +16,7 @@ To enable/disable the widgets you prefer, use the radio buttons.
 
 # Installation
 
-Navigate to https://raw.githubusercontent.com/aclist/kbin-css/main/kbin.user.css and follow the prompts.
+Navigate to the [install script](https://raw.githubusercontent.com/aclist/kbin-css/main/kbin.user.css) and follow the prompts.
 
 You can choose to customize the theme and toggle widgets on/off at this time, or do it after the fact
 via the 'gear' icon from the extension's popup window on the browser toolbar.
