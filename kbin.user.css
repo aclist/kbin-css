@@ -2,7 +2,7 @@
 @name kbin-css
 @namespace github/aclist/kbin-css
 @homepageURL https://github.com/aclist/kbin-css
-@version 0.1.4
+@version 0.1.5
 @updateURL https://github.com/aclist/kbin-css/raw/main/kbin.user.css
 @description Parameterized kbin stylesheet
 @author aclist
@@ -297,6 +297,9 @@
     .comment aside{
         grid-area:initial;
         padding-right:0.5rem;
+    }
+    .vote__down{
+        height: 0px;
     }
 }
 
