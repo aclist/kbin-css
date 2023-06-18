@@ -9,19 +9,26 @@ To enable/disable the widgets you prefer, use the radio buttons.
 
 This theme has chiefly been tested at 1440P and on a desktop environment at different scaling levels.
 
-![Alt text](example.png)
+![Alt text](/examples/example.png)
+
+![Alt text](/examples/example3.png)
 
 # Dependencies
 - stylus
     - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/)
-    - [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
+    - [Chrome-based browsers](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
 
 # Installation
 
-Navigate to the [install script](https://github.com/aclist/kbin-css/raw/main/kbin.user.css) and follow the prompts.
+- Ensure that you have installed the Stylus extension per above.
+- Navigate to the [install script](https://github.com/aclist/kbin-css/raw/main/kbin.user.css) and select `Install Style` on the left hand side.
 
-You can choose to customize the theme and toggle widgets on/off at this time, or do it after the fact
-via the 'gear' icon from the extension's popup window on the browser toolbar.
+![Alt_text](/examples/example5.png)
+
+- You can choose to customize the theme and toggle widgets on/off at this time, but they may not take effect live on the page until installation. Prefer installing the script first,
+then navigating to the 'gear' icon (see figure below) on the Stylus toolbar to make modifications.
+
+![Alt_text](/examples/example4.png)
 
 # Usage
 
