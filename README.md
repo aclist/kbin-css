@@ -25,6 +25,8 @@ This theme has chiefly been tested at 1440P and on a desktop environment at diff
 
 ![Alt_text](/examples/example5.png)
 
+- If you leave 'check for updates' ticked here, the script will check for updates once every 24 hours (or another interval you set in the Stylus settings), ensuring it stays synchronized with new changes
+
 - You can choose to customize the theme and toggle widgets on/off at this time, but they may not take effect live on the page until installation. Prefer installing the script first,
 then navigating to the 'gear' icon (see figure below) on the Stylus toolbar to make modifications.
 
