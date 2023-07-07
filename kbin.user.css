@@ -1,4 +1,5 @@
 
+
 /* ==UserStyle==
 @name kbin-css
 @namespace github/aclist/kbin-css
@@ -47,7 +48,7 @@
 
 ==/UserStyle== */
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*MASTER COLOR SCHEME*/
     :root {
         --bg: bg;
@@ -62,7 +63,7 @@
         --downvote: downvote;
     }
 }
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*THREAD COMPONENT ORDER*/
 /*title, shortdesc, comment submission, sort options, activity, comments*/
 
@@ -85,7 +86,7 @@
     }
 }
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*NAVBAR*/
 
     /*replace 'search' icon with text*/
@@ -152,14 +153,14 @@
         color: var(--text) !important;
     }
 }
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*INBOX*/
     .message.section.content.section--small {
         padding-left: 20px !important;
     }
 }
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*PAGE BODY/THREAD INDEX*/
 
     body{
@@ -288,7 +289,7 @@
     }
 }
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*VOTING*/
 
     /*tighten margins*/
@@ -351,7 +352,7 @@
     }
 }
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*THREADS/COMMENTS*/
 
     /*hide hr*/
@@ -427,7 +428,7 @@
 }
 
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*COMMENT SUBMISSION*/
 
     /*recolor, resize, and remove borders*/
@@ -457,7 +458,7 @@
     }
 }
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*PAGINATION*/
 
     /*label previous,next buttons in pagination*/
@@ -509,7 +510,7 @@
     }
 }
 
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*MAGAZINES*/
 
     /*remove borders on table rows*/
@@ -566,14 +567,14 @@
         column-gap:0.4rem;
     }
 }
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*PROFILES*/
     .user__follow div::before {
         content: "Followers:";
         padding-right: 3px;
     }
 }
-@-moz-document domain("kbin.social") {
+@-moz-document domain("kbin.social"), domain("kbin.pub") {
 /*HIDE MISC. WIDGETS*/
 
 /*SIDEBAR*/
@@ -648,7 +649,7 @@
 
     /*hide thumbnails*/
     if (!(thumbnail)) {
-        .entry.section.subject figure,.thumb{
+        .entry.section.subject figure,.thumb,.no-image-placeholder{
             display:none;
         }
     }
@@ -735,4 +736,7 @@
         display:inline-block !important;
     }
     }
+}
+.subject.own{
+	border-left: none
 }
