@@ -92,7 +92,6 @@
     /*normalize login username size and padding*/
     .login{
         font-size:1.2em;
-        padding-bottom:.5rem !important;
     }
     /*recolor header links*/
     header menu li a {
