@@ -210,11 +210,6 @@
     .stretched-link{
         font-size:0.9em;
     }
-    /*add submitted by label to thread*/
-    .entry > .entry__meta .user-inline::before{
-        content:"submitted by";
-        color:var(--text)
-    }
     .entry{
         padding-top:10px !important;
         background-color:var(--bg)
